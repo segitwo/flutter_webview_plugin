@@ -283,6 +283,12 @@ class WebviewManager {
                 }
 
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+                activity.getWindow().setFlags(
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN
+                );
+
                 // add custom view to container and save reference
                 customView = view;
                 customViewCallback = callback;
@@ -303,6 +309,10 @@ class WebviewManager {
                     return;
 
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+                activity.getWindow().clearFlags(
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN
+                );
 
                 // Hide the custom view and show Webview
                 FrameLayout rootView = (FrameLayout)webView.getRootView();
