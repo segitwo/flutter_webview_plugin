@@ -281,7 +281,12 @@ class WebviewManager {
                     return;
                 }
 
+                View decorView = activity.getWindow().getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                decorView.setSystemUiVisibility(uiOptions);
+
                 (activity.getActionBar()).hide();
+
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 // add custom view to container and save reference
                 customView = view;
@@ -302,7 +307,12 @@ class WebviewManager {
                 if (customView == null)
                     return;
 
+                View decorView = activity.getWindow().getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+                decorView.setSystemUiVisibility(uiOptions);
+
                 (activity.getActionBar()).show();
+
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 // Hide the custom view and show Webview
