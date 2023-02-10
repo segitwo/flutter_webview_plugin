@@ -282,10 +282,9 @@ class WebviewManager {
                     return;
                 }
 
-                activity.getWindow()
-                        .setFlags(
-                                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                View decorView = activity.getWindow().getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                decorView.setSystemUiVisibility(uiOptions);
 
                 (activity.getActionBar()).hide();
 
@@ -312,12 +311,6 @@ class WebviewManager {
                 View decorView = activity.getWindow().getDecorView();
                 int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
                 decorView.setSystemUiVisibility(uiOptions);
-
-                activity.getWindow()
-                        .setFlags(
-                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
-                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-
 
                 (activity.getActionBar()).show();
 
