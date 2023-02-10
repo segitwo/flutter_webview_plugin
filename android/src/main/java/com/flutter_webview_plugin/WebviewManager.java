@@ -1,5 +1,6 @@
 package com.flutter_webview_plugin;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -280,6 +281,7 @@ class WebviewManager {
                     return;
                 }
 
+                (activity.getActionBar()).hide();
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 // add custom view to container and save reference
                 customView = view;
@@ -300,6 +302,7 @@ class WebviewManager {
                 if (customView == null)
                     return;
 
+                (activity.getActionBar()).show();
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 // Hide the custom view and show Webview
