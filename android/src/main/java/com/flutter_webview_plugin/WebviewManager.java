@@ -282,8 +282,6 @@ class WebviewManager {
                     return;
                 }
 
-                (activity.getActionBar()).hide();
-
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 // add custom view to container and save reference
                 customView = view;
@@ -303,8 +301,6 @@ class WebviewManager {
                 super.onHideCustomView();
                 if (customView == null)
                     return;
-
-                (activity.getActionBar()).show();
 
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
