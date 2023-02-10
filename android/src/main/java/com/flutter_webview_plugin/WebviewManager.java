@@ -1,6 +1,8 @@
 package com.flutter_webview_plugin;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -11,6 +13,7 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
@@ -279,6 +282,7 @@ class WebviewManager {
                     return;
                 }
 
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 // add custom view to container and save reference
                 customView = view;
                 customViewCallback = callback;
@@ -297,6 +301,8 @@ class WebviewManager {
                 super.onHideCustomView();
                 if (customView == null)
                     return;
+
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 // Hide the custom view and show Webview
                 FrameLayout rootView = (FrameLayout)webView.getRootView();
