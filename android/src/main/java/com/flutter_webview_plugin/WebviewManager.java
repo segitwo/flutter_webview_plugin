@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.SslErrorHandler;
@@ -281,9 +282,10 @@ class WebviewManager {
                     return;
                 }
 
-                View decorView = activity.getWindow().getDecorView();
-                int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-                decorView.setSystemUiVisibility(uiOptions);
+                activity.getWindow()
+                        .setFlags(
+                                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
                 (activity.getActionBar()).hide();
 
@@ -310,6 +312,12 @@ class WebviewManager {
                 View decorView = activity.getWindow().getDecorView();
                 int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
                 decorView.setSystemUiVisibility(uiOptions);
+
+                activity.getWindow()
+                        .setFlags(
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+
 
                 (activity.getActionBar()).show();
 
